@@ -55,9 +55,8 @@ else:
     print(args[1])
 print('引数チェック終了')
 
-tes_const = ConstClass()
 const = CommonConstClass()
-chrome_driver = tes_const.chrome_driver_path
+chrome_driver = const.get_driver()
 chrome_home = const.get_chrome_home()
 print(chrome_driver)
 
