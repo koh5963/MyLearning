@@ -5,23 +5,23 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 
-class ConstClass:
-    def __init__(self):
-        const_keys = ['chrome_driver_path', 'chrome_home', 'search_input', 'search_button', 'div_vector', 'title', 'explane']
-        const_file = open('./const.txt', 'r', encoding='UTF-8')
-        const_list = const_file.readlines()
-        for const in const_list:
-            const_key_val = const.split('=')
-            if len(const_key_val) != 2:
-                raise ValueError('定数ファイル定義エラー')
-                exit()
-            key = const.split('=')[0]
-            val = const.split('=')[1]
-            if key in const_keys:
-                setattr(self, key, val)
-            else:
-                raise ValueError('定数ファイル定義エラー')
-                exit()
+# class ConstClass:
+#     def __init__(self):
+#         const_keys = ['chrome_driver_path', 'chrome_home', 'search_input', 'search_button', 'div_vector', 'title', 'explane']
+#         const_file = open('./const.txt', 'r', encoding='UTF-8')
+#         const_list = const_file.readlines()
+#         for const in const_list:
+#             const_key_val = const.split('=')
+#             if len(const_key_val) != 2:
+#                 raise ValueError('定数ファイル定義エラー')
+#                 exit()
+#             key = const.split('=')[0]
+#             val = const.split('=')[1]
+#             if key in const_keys:
+#                 setattr(self, key, val)
+#             else:
+#                 raise ValueError('定数ファイル定義エラー')
+#                 exit()
 
 class CommonConstClass:
     CHROME_DRIVER_PATH = './chromedriver_win32/chromedriver.exe'
@@ -31,20 +31,6 @@ class CommonConstClass:
     
     def get_chrome_home (self):
         return self.CHROME_HOME
-
-class GoogleHomeTagConst: 
-    SEARCH_INPUT = 'gLFyf.gsfi'
-    SEARCH_BUTTON = 'gNO89b'
-
-    def get_search_input (self):
-        return self.SEARCH_INPUT
-    
-    def get_search_button (self):
-        return self.SEARCH_BUTTON
-
-class GoogleSearchListTagConst:
-    SEARCH_RESULT_AREA = 'jtfYYd'
-    TITLE = 'yuRUbf'
 
 print('引数チェック')
 args = sys.argv
@@ -58,7 +44,6 @@ print('引数チェック終了')
 const = CommonConstClass()
 chrome_driver = const.get_driver()
 chrome_home = const.get_chrome_home()
-print(chrome_driver)
 
 options = webdriver.ChromeOptions()
 options.add_experimental_option('excludeSwitches', ['enable-logging'])
